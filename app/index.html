@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="GithubApp">
+  <head>
+    <meta charset="UTF-8">
+    <title>GitHub API</title>
+    <link rel="stylesheet" type="text/css" href="./base.css">
+  </head>
+  <body>
+    <header data-ng-controller="AboutMeController as aboutmectrl" data-ng-init="aboutmectrl.getMyInfo()">
+        <h1>Josh Zylstra</h1>
+        <img src="{{aboutmectrl.myAvatar}}"></p>
+        <p ng-bind="aboutmectrl.myFollowers"></p>
+        <p ng-bind="aboutmectrl.myFollowing"></p>
+    </header>
+    <main data-ng-controller="RepoController as repoctrl" data-ng-init="repoctrl.getRepos()">
+    <section data-ng-repeat="repo in repoctrl.myRepos">
+      <h1 ng-bind="repo.url"></h1>
+      <p ng-bind="repo.clone_url"><a ng-href="{{repo.clone_url}}"</p>
+      <!-- <p ng-bind="repo.content"></p> -->
+    </section>
+  </main>
+    <script src="./bundle.js"></script>
+  </body>
+</html>
