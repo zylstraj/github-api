@@ -8,14 +8,16 @@
   <body>
     <header data-ng-controller="AboutMeController as aboutmectrl" data-ng-init="aboutmectrl.getMyInfo()">
         <h1>Josh Zylstra</h1>
-        <img src="{{aboutmectrl.myAvatar}}"></p>
-        <p ng-bind="aboutmectrl.myFollowers"></p>
-        <p ng-bind="aboutmectrl.myFollowing"></p>
+        <img ng-src="{{aboutmectrl.myInfo.avatar_url}}"></p>
+        <p>Following: {{aboutmectrl.myInfo.following}}</p>
+        <p>Followers: {{aboutmectrl.myInfo.followers}}</p>
+        <p>Visit My GitHub Page: <a ng-href="{{aboutmectrl.myInfo.html_url}}"> {{aboutmectrl.myInfo.html_url}}</a></p>
     </header>
     <main data-ng-controller="RepoController as repoctrl" data-ng-init="repoctrl.getRepos()">
+    <h2>List of My Repositories</h2>
     <section data-ng-repeat="repo in repoctrl.myRepos">
-      <h1 ng-bind="repo.url"></h1>
-      <p ng-bind="repo.clone_url"><a ng-href="{{repo.clone_url}}"</p>
+      <h1>{{repo.name}}</a></h1>
+      <p><a ng-href="{{repo.clone_url}}">Visit This Repo</a></p>
       <!-- <p ng-bind="repo.content"></p> -->
     </section>
   </main>
